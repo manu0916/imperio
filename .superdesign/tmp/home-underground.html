@@ -1,0 +1,710 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440, initial-scale=1.0">
+    <title>[NOME DA LOJA] | Moda Contemporânea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap');
+
+        :root {
+            --ink: #080808;
+            --paper: #0D0D0D;
+            --chalk: #F2EEE5;
+            --sand: #2A2927;
+            --stone: #A29E96;
+            --wine: #8F1F3F;
+            --navy: #151B28;
+            --sage: #667064;
+            --error: #A4382F;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--paper);
+            color: var(--chalk);
+            margin: 0;
+            padding: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0.07;
+            background-image: radial-gradient(var(--chalk) 0.7px, transparent 0.7px);
+            background-size: 5px 5px;
+            mix-blend-mode: overlay;
+        }
+
+        .bg-ink { background-color: var(--ink); }
+        .bg-paper { background-color: var(--paper); }
+        .bg-chalk { background-color: var(--chalk); }
+        .bg-sand { background-color: var(--sand); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .text-ink { color: var(--ink); }
+        .text-paper { color: var(--paper); }
+        .text-chalk { color: var(--chalk); }
+        .text-stone { color: var(--stone); }
+        .text-wine { color: var(--wine); }
+        .border-sand { border-color: var(--sand); }
+        .border-stone { border-color: var(--stone); }
+        .bg-chalk\/80 { background-color: rgba(242, 238, 229, 0.82); }
+        .text-chalk\/70 { color: rgba(242, 238, 229, 0.72); }
+        .border-chalk\/30 { border-color: rgba(242, 238, 229, 0.34); }
+
+        header {
+            background: rgba(13, 13, 13, 0.9) !important;
+            color: var(--chalk);
+        }
+
+        .street-doodle {
+            position: absolute;
+            z-index: 2;
+            pointer-events: none;
+            color: var(--chalk);
+            mix-blend-mode: difference;
+        }
+
+        .marker-ring {
+            position: relative;
+            display: inline-block;
+        }
+
+        .marker-ring::after {
+            content: '';
+            position: absolute;
+            inset: -8px -15px -7px -13px;
+            border: 2px solid var(--wine);
+            border-radius: 50%;
+            transform: rotate(-4deg);
+        }
+
+        .underground-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: var(--chalk);
+            color: var(--ink);
+            padding: 9px 14px;
+            transform: rotate(-2deg);
+            box-shadow: 5px 5px 0 var(--wine);
+        }
+
+        .xerox-image {
+            filter: grayscale(0.45) contrast(1.2) saturate(0.8);
+            transition: filter 0.35s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .group:hover .xerox-image,
+        .xerox-image:hover {
+            filter: grayscale(0) contrast(1.05) saturate(1);
+        }
+
+        .rough-frame {
+            border: 1px dashed rgba(242, 238, 229, 0.48);
+            padding: 8px;
+        }
+
+        .strike-word {
+            position: relative;
+            display: inline-block;
+        }
+
+        .strike-word::after {
+            content: '';
+            position: absolute;
+            left: -4%;
+            top: 54%;
+            width: 108%;
+            height: 7px;
+            background: var(--wine);
+            transform: rotate(-2deg);
+            mix-blend-mode: multiply;
+        }
+
+        .font-serif {
+            font-family: 'Instrument Serif', serif;
+        }
+
+        .font-mono-underground {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .tracking-editorial {
+            letter-spacing: 0.14em;
+        }
+
+        .hero-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(4.5rem, 9vw, 10.5rem);
+            font-weight: 600;
+            line-height: 0.76;
+            letter-spacing: -0.095em;
+            text-transform: uppercase;
+        }
+
+        .street-kicker {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .collection-index {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(3rem, 5vw, 6rem);
+            font-weight: 600;
+            line-height: 0.8;
+            letter-spacing: -0.08em;
+        }
+
+        .product-code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+
+        .border-thin {
+            border: 1px solid var(--sand);
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .product-card:hover .quick-add {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--paper);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--sand);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--stone);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen relative overflow-x-hidden" data-sd-id="1">
+        <!-- Top Bar -->
+        <div class="bg-chalk text-ink py-3 px-8 text-center text-[10px] font-mono-underground font-semibold uppercase tracking-editorial leading-none" data-sd-id="2">
+            DROP 01 / 26 · Frete grátis acima de R$ 399 · Troca facilitada em até 30 dias
+        </div>
+
+        <!-- Header -->
+        <header class="sticky top-0 z-50 transition-all duration-300 backdrop-blur-md bg-paper border-b border-dashed border-stone" data-sd-id="3">
+            <div class="max-w-[1600px] mx-auto px-8 h-[76px] flex items-center justify-between" data-sd-id="4">
+                <nav class="hidden lg:flex items-center gap-8 text-[11px] font-semibold uppercase tracking-widest" data-sd-id="5">
+                    <a href="#" id="nav-novidades" class="hover:text-stone transition-colors" data-sd-id="6">Novidades</a>
+                    <a href="#" id="nav-feminino" class="hover:text-stone transition-colors" data-sd-id="7">Feminino</a>
+                    <a href="#" id="nav-masculino" class="hover:text-stone transition-colors" data-sd-id="8">Masculino</a>
+                    <a href="#" id="nav-colecoes" class="hover:text-stone transition-colors" data-sd-id="9">Coleções</a>
+                    <a href="#" id="nav-sale" class="text-wine hover:opacity-80 transition-opacity" data-sd-id="10">Sale</a>
+                </nav>
+
+                <div class="absolute left-1/2 -translate-x-1/2" data-sd-id="11">
+                    <a href="#home" id="brand-logo" class="text-xl font-semibold uppercase tracking-[-0.06em]" data-sd-id="12">[NOME DA LOJA]</a>
+                </div>
+
+                <div class="flex items-center gap-6" data-sd-id="13">
+                    <button id="btn-search" class="flex items-center gap-2 hover:text-stone transition-colors" data-sd-id="14">
+                        <iconify-icon icon="lucide:search" class="text-lg"></iconify-icon>
+                    </button>
+                    <a href="#" id="btn-account" class="hover:text-stone transition-colors" data-sd-id="15">
+                        <iconify-icon icon="lucide:user" class="text-lg"></iconify-icon>
+                    </a>
+                    <a href="#" id="btn-wishlist" class="hover:text-stone transition-colors" data-sd-id="16">
+                        <iconify-icon icon="lucide:heart" class="text-lg"></iconify-icon>
+                    </a>
+                    <button id="btn-cart" class="relative group" data-sd-id="17">
+                        <iconify-icon icon="lucide:shopping-bag" class="text-lg group-hover:text-stone transition-colors"></iconify-icon>
+                        <span class="absolute -top-1.5 -right-2 bg-wine text-chalk text-[8px] font-bold w-4 h-4 flex items-center justify-center rounded-full" data-sd-id="18">2</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main data-sd-id="19">
+            <!-- Hero Section -->
+            <section class="h-[calc(100vh-100px)] min-h-[700px] flex bg-paper border-b border-sand relative" data-sd-id="20">
+                <div class="flex-1 flex flex-col justify-center px-16 lg:px-24 relative overflow-hidden" data-sd-id="21">
+                    <div class="absolute -left-4 bottom-0 text-[9.5vw] font-semibold uppercase tracking-[-0.11em] leading-[0.72] text-chalk opacity-[0.035] pointer-events-none" aria-hidden="true" data-sd-id="244">Under<br>ground</div>
+                    <svg class="absolute -left-8 top-12 w-44 h-44 text-wine opacity-90" viewBox="0 0 180 180" fill="none" aria-hidden="true" data-sd-id="240">
+                        <path d="M17 101C43 67 49 29 88 20C123 12 163 43 151 82C141 115 92 105 73 132C59 151 77 165 108 160" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M18 100L38 100M17 100L23 81" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    <div class="max-w-xl" data-sd-id="22">
+                        <div class="flex items-center gap-6 mb-8" data-sd-id="227">
+                            <span class="font-mono-underground text-[10px] font-semibold uppercase tracking-[0.18em] text-wine marker-ring" data-sd-id="23">DROP 01 / 26</span>
+                            <span class="h-px w-12 bg-sand" data-sd-id="228"></span>
+                            <span class="street-kicker text-stone" data-sd-id="229">[SLOGAN DA MARCA]</span>
+                        </div>
+                        <h1 class="hero-title mb-8" data-sd-id="24">
+                            O essencial,<br><span class="strike-word text-chalk">elevado.</span>
+                        </h1>
+                        <p class="text-stone text-lg mb-10 max-w-md" data-sd-id="25">
+                            Curadoria contemporânea para quem busca versatilidade e autenticidade na forma de vestir.
+                        </p>
+                        <a href="#" id="cta-hero" class="inline-block bg-chalk text-ink px-12 py-5 text-[12px] font-semibold uppercase tracking-editorial hover:bg-wine hover:text-chalk transition-colors" data-sd-id="26">
+                            Explorar o drop
+                        </a>
+                        <div class="mt-14 pt-5 border-t border-sand flex justify-between street-kicker text-stone" data-sd-id="230">
+                            <span>Curadoria urbana</span>
+                            <span>CG · BR</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[55%] relative overflow-hidden" data-sd-id="27">
+                    <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-wine-street-look/0003-imperiostorecg01-reel-DdjWnjdxCTG.jpg" alt="Composição urbana em vinho com tênis cinza" class="w-full h-full object-cover xerox-image" data-sd-id="28">
+                    <svg class="street-doodle right-8 top-8 w-36 h-36" viewBox="0 0 140 140" fill="none" aria-hidden="true" data-sd-id="241">
+                        <path d="M70 9L80 51L119 31L91 67L132 78L89 84L111 122L77 94L61 133L61 94L18 117L47 82L8 68L50 64L26 28L61 52L70 9Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                    <svg class="street-doodle left-8 bottom-8 w-48 h-24" viewBox="0 0 190 90" fill="none" aria-hidden="true" data-sd-id="242">
+                        <path d="M8 62C33 24 66 82 94 42C119 7 145 54 182 15" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M163 13L183 14L179 34" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    <span class="absolute right-8 bottom-8 z-10 street-kicker bg-ink text-chalk px-4 py-3 border border-chalk/30" data-sd-id="243">STREET UNIT / 001</span>
+                    <span class="absolute left-10 top-1/2 z-10 underground-label" data-sd-id="245">NO RULES / JUST FORM</span>
+                </div>
+            </section>
+
+            <!-- Marquee -->
+            <div class="bg-wine py-6 border-y border-wine overflow-hidden text-chalk" data-sd-id="29">
+                <div class="marquee-container" data-sd-id="30">
+                    <div class="marquee-content flex gap-24 items-center" data-sd-id="31">
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="32">Novo Drop</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="33"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="34">Formas Urbanas</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="35"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="36">Peças para o Agora</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="37"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="38">Novo Drop</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="39"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="40">Formas Urbanas</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="41"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="42">Peças para o Agora</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="43"></span>
+                    </div>
+                    <div class="marquee-content flex gap-24 items-center ml-24" aria-hidden="true" data-sd-id="44">
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="45">Novo Drop</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="46"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="47">Formas Urbanas</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="48"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="49">Peças para o Agora</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="50"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="51">Novo Drop</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="52"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="53">Formas Urbanas</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="54"></span>
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="55">Peças para o Agora</span>
+                        <span class="w-1 h-1 bg-ink rounded-full" data-sd-id="56"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-32 overflow-hidden border-b border-dashed border-stone bg-ink" aria-hidden="true" data-sd-id="246">
+                <svg class="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-24 text-chalk opacity-70" viewBox="0 0 1440 96" preserveAspectRatio="none" fill="none" data-sd-id="247">
+                    <path d="M-20 49C40 13 77 83 137 48C197 13 234 82 294 47C354 12 391 81 451 46C511 11 548 80 608 45C668 10 705 79 765 44C825 9 862 78 922 43C982 8 1019 77 1079 42C1139 7 1176 76 1236 41C1296 6 1333 75 1460 39" stroke="currentColor" stroke-width="2"/>
+                    <path d="M76 31L91 62M198 30L213 61M320 29L335 60M442 28L457 59M564 27L579 58M686 26L701 57M808 25L823 56M930 24L945 55M1052 23L1067 54M1174 22L1189 53M1296 21L1311 52" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center" data-sd-id="248"><span class="underground-label rotate-1">LOCAL / RAW / LIMITED / 2026</span></div>
+            </div>
+
+            <!-- Categorias Em Destaque -->
+            <section class="max-w-[1600px] mx-auto px-8 py-32 bg-paper" data-sd-id="57">
+                <div class="grid grid-cols-12 gap-8" data-sd-id="58">
+                    <div class="col-span-4 group cursor-pointer" data-sd-id="59">
+                        <div class="flex justify-between items-end mb-5 border-b border-sand pb-4" data-sd-id="231"><span class="collection-index">01</span><span class="street-kicker text-stone">Core essentials</span></div>
+                        <div class="aspect-[3/4] bg-sand overflow-hidden mb-6 rough-frame" data-sd-id="60">
+                            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-cropped-tees-neutral/0001-imperiostorecg01-reel-Ddo00bPxYUQ.jpg" alt="Camisetas essenciais em preto, cinza e branco" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="61">
+                        </div>
+                        <h3 class="font-semibold uppercase tracking-[-0.04em] text-3xl mb-2" data-sd-id="62">Essenciais</h3>
+                        <p class="text-stone text-sm" data-sd-id="63">Peças que formam a base do guarda-roupa urbano.</p>
+                    </div>
+                    <div class="col-span-4 group cursor-pointer mt-20" data-sd-id="64">
+                        <div class="flex justify-between items-end mb-5 border-b border-sand pb-4" data-sd-id="232"><span class="collection-index">02</span><span class="street-kicker text-stone">Deep wine</span></div>
+                        <div class="aspect-[3/4] bg-sand overflow-hidden mb-6 rough-frame" data-sd-id="65">
+                            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-ribbed-tees-colors/0009-imperiostorecg01-reel-DdbsqMdR2dg.jpg" alt="Camisetas caneladas em tons neutros e vinho" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="66">
+                        </div>
+                        <h3 class="font-semibold uppercase tracking-[-0.04em] text-3xl mb-2" data-sd-id="67">Tons da Temporada</h3>
+                        <p class="text-stone text-sm" data-sd-id="68">A paleta de cores inspirada nas ruas da cidade.</p>
+                    </div>
+                    <div class="col-span-4 group cursor-pointer" data-sd-id="69">
+                        <div class="flex justify-between items-end mb-5 border-b border-sand pb-4" data-sd-id="233"><span class="collection-index">03</span><span class="street-kicker text-stone">Urban motion</span></div>
+                        <div class="aspect-[3/4] bg-sand overflow-hidden mb-6 rough-frame" data-sd-id="70">
+                            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-navy-stripe-look/0007-imperiostorecg01-reel-DdjWXM-R2Wu.jpg" alt="Look urbano com camiseta listrada azul-marinho" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="71">
+                        </div>
+                        <h3 class="font-semibold uppercase tracking-[-0.04em] text-3xl mb-2" data-sd-id="72">Movimento Urbano</h3>
+                        <p class="text-stone text-sm" data-sd-id="73">Conforto e design para o ritmo acelerado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Novidades Products -->
+            <section class="bg-[#141414] py-32 border-y border-sand" data-sd-id="74">
+                <div class="max-w-[1600px] mx-auto px-8" data-sd-id="75">
+                    <div class="flex justify-between items-end mb-16" data-sd-id="76">
+                        <div data-sd-id="77">
+                            <span class="text-[11px] font-semibold uppercase tracking-editorial text-stone mb-4 block" data-sd-id="78">Lançamentos</span>
+                            <h2 class="text-5xl font-semibold uppercase tracking-[-0.05em]" data-sd-id="79">Novidades da Semana</h2>
+                        </div>
+                        <a href="#" id="view-all-new" class="btn-link relative pb-1 text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="80">Ver todos os produtos</a>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-8" data-sd-id="81">
+                        <!-- Product Card 1 -->
+                        <div class="product-card group relative" data-sd-id="82">
+                            <div class="aspect-[3/4] bg-sand relative overflow-hidden rough-frame" data-sd-id="83">
+                                <span class="absolute top-4 left-4 z-10 bg-wine text-chalk text-[9px] px-3 py-1 font-semibold uppercase tracking-widest rounded-full" data-sd-id="84">Novo</span>
+                                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-ink bg-chalk/80 backdrop-blur-sm rounded-full hover:bg-chalk transition-colors" data-sd-id="85">
+                                    <iconify-icon icon="lucide:heart" class="text-lg"></iconify-icon>
+                                </button>
+                                <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-cropped-tees-neutral/0001-imperiostorecg01-reel-Ddo00bPxYUQ.jpg" alt="Cropped tee canelada off-white" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="86">
+                                <div class="quick-add absolute bottom-0 left-0 w-full p-4 translate-y-full opacity-0 transition-all duration-300" data-sd-id="87">
+                                    <button class="w-full bg-chalk text-ink py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-wine hover:text-chalk transition-colors" data-sd-id="88">
+                                        Adicionar à sacola
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-6" data-sd-id="89">
+                                <div class="flex justify-between items-start" data-sd-id="90">
+                                    <div data-sd-id="91">
+                                        <span class="product-code block mb-2" data-sd-id="234">NL-001 / DROP 01</span>
+                                        <p class="text-[10px] font-semibold uppercase tracking-editorial text-stone mb-1" data-sd-id="92">Camisetas</p>
+                                        <h4 class="text-sm font-medium" data-sd-id="93">Cropped Tee Canelada Off-white</h4>
+                                    </div>
+                                    <span class="text-sm font-semibold" data-sd-id="94">R$ 129,90</span>
+                                </div>
+                                <div class="flex gap-2 mt-3" data-sd-id="95">
+                                    <div class="w-3 h-3 rounded-full bg-paper border border-stone" data-sd-id="96"></div>
+                                    <div class="w-3 h-3 rounded-full bg-stone" data-sd-id="97"></div>
+                                    <div class="w-3 h-3 rounded-full bg-ink" data-sd-id="98"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card group relative" data-sd-id="99">
+                            <div class="aspect-[3/4] bg-sand relative overflow-hidden rough-frame" data-sd-id="100">
+                                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-ink bg-chalk/80 backdrop-blur-sm rounded-full hover:bg-chalk transition-colors" data-sd-id="101">
+                                    <iconify-icon icon="lucide:heart" class="text-lg"></iconify-icon>
+                                </button>
+                                <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-navy-stripe-look/0007-imperiostorecg01-reel-DdjWXM-R2Wu.jpg" alt="Camiseta listrada azul-marinho com calça clara" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="102">
+                                <div class="quick-add absolute bottom-0 left-0 w-full p-4 translate-y-full opacity-0 transition-all duration-300" data-sd-id="103">
+                                    <button class="w-full bg-chalk text-ink py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-wine hover:text-chalk transition-colors" data-sd-id="104">
+                                        Adicionar à sacola
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-6" data-sd-id="105">
+                                <div class="flex justify-between items-start" data-sd-id="106">
+                                    <div data-sd-id="107">
+                                        <span class="product-code block mb-2" data-sd-id="235">NL-007 / DROP 01</span>
+                                        <p class="text-[10px] font-semibold uppercase tracking-editorial text-stone mb-1" data-sd-id="108">Masculino</p>
+                                        <h4 class="text-sm font-medium" data-sd-id="109">Camiseta Listrada Azul Marinho</h4>
+                                    </div>
+                                    <span class="text-sm font-semibold" data-sd-id="110">R$ 159,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card group relative" data-sd-id="111">
+                            <div class="aspect-[3/4] bg-sand relative overflow-hidden rough-frame" data-sd-id="112">
+                                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-ink bg-chalk/80 backdrop-blur-sm rounded-full hover:bg-chalk transition-colors" data-sd-id="113">
+                                    <iconify-icon icon="lucide:heart" class="text-lg"></iconify-icon>
+                                </button>
+                                <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-white-polo-dark-trouser/0005-imperiostorecg01-reel-DdjWh8Ixl0l.jpg" alt="Polo branca texturizada com calça escura" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="114">
+                                <div class="quick-add absolute bottom-0 left-0 w-full p-4 translate-y-full opacity-0 transition-all duration-300" data-sd-id="115">
+                                    <button class="w-full bg-chalk text-ink py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-wine hover:text-chalk transition-colors" data-sd-id="116">
+                                        Adicionar à sacola
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-6" data-sd-id="117">
+                                <div class="flex justify-between items-start" data-sd-id="118">
+                                    <div data-sd-id="119">
+                                        <span class="product-code block mb-2" data-sd-id="236">NL-005 / DROP 01</span>
+                                        <p class="text-[10px] font-semibold uppercase tracking-editorial text-stone mb-1" data-sd-id="120">Premium Line</p>
+                                        <h4 class="text-sm font-medium" data-sd-id="121">Polo Texturizada Knit</h4>
+                                    </div>
+                                    <span class="text-sm font-semibold" data-sd-id="122">R$ 289,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 (Sale) -->
+                        <div class="product-card group relative" data-sd-id="123">
+                            <div class="aspect-[3/4] bg-sand relative overflow-hidden rough-frame" data-sd-id="124">
+                                <span class="absolute top-4 left-4 z-10 bg-wine text-chalk text-[9px] px-3 py-1 font-semibold uppercase tracking-widest rounded-full" data-sd-id="125">Sale</span>
+                                <button class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-ink bg-chalk/80 backdrop-blur-sm rounded-full hover:bg-chalk transition-colors" data-sd-id="126">
+                                    <iconify-icon icon="lucide:heart" class="text-lg"></iconify-icon>
+                                </button>
+                                <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-wine-stripe-look/0006-imperiostorecg01-reel-DdjWcanRmTg.jpg" alt="Bermuda clara com camiseta listrada vinho" class="w-full h-full object-cover xerox-image group-hover:scale-105 transition-transform duration-700" data-sd-id="127">
+                                <div class="quick-add absolute bottom-0 left-0 w-full p-4 translate-y-full opacity-0 transition-all duration-300" data-sd-id="128">
+                                    <button class="w-full bg-chalk text-ink py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-wine hover:text-chalk transition-colors" data-sd-id="129">
+                                        Adicionar à sacola
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-6" data-sd-id="130">
+                                <div class="flex justify-between items-start" data-sd-id="131">
+                                    <div data-sd-id="132">
+                                        <span class="product-code block mb-2" data-sd-id="237">NL-006 / DROP 01</span>
+                                        <p class="text-[10px] font-semibold uppercase tracking-editorial text-stone mb-1" data-sd-id="133">Bottoms</p>
+                                        <h4 class="text-sm font-medium" data-sd-id="134">Bermuda Sarja Areia</h4>
+                                    </div>
+                                    <div class="text-right" data-sd-id="135">
+                                        <span class="block text-[11px] text-stone line-through decoration-wine" data-sd-id="136">R$ 219,00</span>
+                                        <span class="text-sm font-bold text-wine" data-sd-id="137">R$ 149,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Editorial Grid -->
+            <section class="max-w-[1600px] mx-auto px-8 py-32 bg-paper relative" data-sd-id="138">
+                <svg class="absolute right-8 top-16 w-24 h-24 text-wine" viewBox="0 0 100 100" fill="none" aria-hidden="true" data-sd-id="249"><path d="M12 11L89 88M89 11L12 88M6 49H95" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+                <div class="grid grid-cols-12 gap-16 items-center" data-sd-id="139">
+                    <div class="col-span-7" data-sd-id="140">
+                        <div class="relative" data-sd-id="141">
+                            <div class="aspect-[16/9] bg-sand overflow-hidden rough-frame" data-sd-id="142">
+                                <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/brand-storefront-context/0008-imperiostorecg01-reel-DdeeDPGxaFz.jpg" alt="Entrada da loja física e sua curadoria de peças" class="w-full h-full object-cover xerox-image" data-sd-id="143">
+                            </div>
+                            <div class="absolute -bottom-12 -right-12 bg-navy p-12 text-chalk max-w-sm" data-sd-id="144">
+                                <h3 class="font-serif text-4xl mb-6" data-sd-id="145">A Cidade em Movimento</h3>
+                                <p class="text-sm opacity-80 leading-relaxed" data-sd-id="146">
+                                    Cada peça é desenhada para transitar entre diferentes cenários urbanos, unindo a praticidade do esporte à sofisticação da moda casual.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-5" data-sd-id="147">
+                        <span class="text-[11px] font-semibold uppercase tracking-editorial text-stone mb-6 block" data-sd-id="148">Manifesto</span>
+                        <h2 class="text-6xl font-semibold uppercase tracking-[-0.06em] leading-[0.9] mb-8" data-sd-id="149">Feito para o agora.<br><span class="font-serif italic normal-case font-normal text-wine tracking-normal">Pensado para o amanhã.</span></h2>
+                        <p class="text-stone mb-10 max-w-md" data-sd-id="150">
+                            Não acreditamos em tendências passageiras. Acreditamos na longevidade, na qualidade têxtil e na curadoria que resiste ao tempo.
+                        </p>
+                        <a href="#" id="btn-manifesto" class="btn-link relative pb-1 text-[11px] font-semibold uppercase tracking-editorial" data-sd-id="151">Conheça nossa essência</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Banner Wine -->
+            <section class="bg-ink py-32 overflow-hidden border-y border-dashed border-stone relative" data-sd-id="152">
+                <div class="absolute -left-6 top-1/2 -translate-y-1/2 text-[17vw] font-semibold uppercase tracking-[-0.11em] text-wine opacity-20 pointer-events-none" aria-hidden="true" data-sd-id="250">WINE</div>
+                <div class="max-w-[1600px] mx-auto px-8 flex items-center justify-between gap-16 relative z-10" data-sd-id="153">
+                    <div class="w-1/2" data-sd-id="154">
+                        <span class="street-kicker text-chalk/60 mb-6 block" data-sd-id="238">CAPSULE 02 / 26 · LIMITED DROP</span>
+                        <h2 class="text-7xl font-semibold uppercase text-chalk tracking-[-0.09em] leading-[0.8] mb-8" data-sd-id="155">
+                            Deep Wine<br>Drop
+                        </h2>
+                        <p class="font-serif italic text-3xl text-chalk mb-8" data-sd-id="239">Cor para ocupar espaço.</p>
+                        <p class="text-chalk/70 text-lg mb-12 max-w-md" data-sd-id="156">
+                            A cor icônica da estação em texturas que abraçam o corpo. Conheça a coleção cápsula Burgundy.
+                        </p>
+                        <a href="#" id="btn-burgundy" class="inline-block border border-chalk/30 text-chalk px-12 py-5 text-[12px] font-semibold uppercase tracking-editorial hover:bg-chalk hover:text-wine transition-all" data-sd-id="157">
+                            Explorar coleção
+                        </a>
+                    </div>
+                    <div class="w-1/2 flex justify-end" data-sd-id="158">
+                        <div class="w-80 h-[500px] bg-ink transform rotate-3 overflow-hidden rough-frame" data-sd-id="159">
+                            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-ribbed-tees-colors/0009-imperiostorecg01-reel-DdbsqMdR2dg.jpg" alt="Detalhe de camiseta canelada em vinho" class="w-full h-full object-cover opacity-90 xerox-image" data-sd-id="160">
+                        </div>
+                        <div class="w-80 h-[500px] bg-ink -ml-16 mt-20 overflow-hidden rough-frame" data-sd-id="161">
+                            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/078c9808-f4b5-410c-bc27-d76852c39c8f/content-assets/catalog-wine-street-look/0003-imperiostorecg01-reel-DdjWnjdxCTG.jpg" alt="Look urbano em vinho com tênis cinza" class="w-full h-full object-cover xerox-image" data-sd-id="162">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benefícios -->
+            <section class="border-b border-sand bg-[#111111]" data-sd-id="163">
+                <div class="max-w-[1600px] mx-auto grid grid-cols-4 text-center divide-x divide-sand" data-sd-id="164">
+                    <div class="py-12 px-8 group" data-sd-id="165">
+                        <iconify-icon icon="lucide:truck" class="text-2xl mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                        <h5 class="text-[10px] font-bold uppercase tracking-editorial mb-2" data-sd-id="166">Entrega Rápida</h5>
+                        <p class="text-[10px] text-stone uppercase" data-sd-id="167">Para todo o Brasil</p>
+                    </div>
+                    <div class="py-12 px-8 group" data-sd-id="168">
+                        <iconify-icon icon="lucide:refresh-cw" class="text-2xl mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                        <h5 class="text-[10px] font-bold uppercase tracking-editorial mb-2" data-sd-id="169">Troca Grátis</h5>
+                        <p class="text-[10px] text-stone uppercase" data-sd-id="170">Primeira troca sem custo</p>
+                    </div>
+                    <div class="py-12 px-8 group" data-sd-id="171">
+                        <iconify-icon icon="lucide:credit-card" class="text-2xl mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                        <h5 class="text-[10px] font-bold uppercase tracking-editorial mb-2" data-sd-id="172">Parcelamento</h5>
+                        <p class="text-[10px] text-stone uppercase" data-sd-id="173">Até 10x sem juros</p>
+                    </div>
+                    <div class="py-12 px-8 group" data-sd-id="174">
+                        <iconify-icon icon="lucide:shield-check" class="text-2xl mb-4 group-hover:scale-110 transition-transform"></iconify-icon>
+                        <h5 class="text-[10px] font-bold uppercase tracking-editorial mb-2" data-sd-id="175">Compra Segura</h5>
+                        <p class="text-[10px] text-stone uppercase" data-sd-id="176">Dados 100% protegidos</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="bg-ink py-32" data-sd-id="177">
+                <div class="max-w-[1600px] mx-auto px-8 flex flex-col items-center text-center" data-sd-id="178">
+                    <span class="text-[11px] font-semibold uppercase tracking-editorial text-stone mb-6 block" data-sd-id="179">Keep in touch</span>
+                    <h2 class="text-5xl font-serif text-chalk mb-12" data-sd-id="180">Receba nossa curadoria mensal.</h2>
+                    <form class="w-full max-w-lg flex gap-4" data-sd-id="181">
+                        <input type="email" placeholder="SEU MELHOR E-MAIL" class="flex-1 bg-transparent border-b border-stone text-chalk py-4 text-[10px] tracking-editorial focus:outline-none focus:border-chalk transition-colors" data-sd-id="182">
+                        <button type="submit" id="btn-subscribe" class="text-chalk text-[10px] font-bold uppercase tracking-editorial border-b border-chalk pb-1 hover:text-stone hover:border-stone transition-all" data-sd-id="183">
+                            Inscrever-se
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-ink text-chalk border-t border-white/10 pt-32 pb-16" data-sd-id="184">
+            <div class="max-w-[1600px] mx-auto px-8" data-sd-id="185">
+                <div class="grid grid-cols-12 gap-16 mb-32" data-sd-id="186">
+                    <div class="col-span-4" data-sd-id="187">
+                        <h3 class="text-3xl font-serif mb-8" data-sd-id="188">[NOME DA LOJA]</h3>
+                        <p class="text-stone text-sm max-w-xs leading-relaxed" data-sd-id="189">
+                            Elevando o material cotidiano por meio de design, curadoria e sustentabilidade.
+                        </p>
+                        <div class="flex gap-6 mt-12" data-sd-id="190">
+                            <a href="#" id="social-ig" class="text-stone hover:text-chalk transition-colors" data-sd-id="191"><iconify-icon icon="lucide:instagram" class="text-xl"></iconify-icon></a>
+                            <a href="#" id="social-pt" class="text-stone hover:text-chalk transition-colors" data-sd-id="192"><iconify-icon icon="lucide:pinterest" class="text-xl"></iconify-icon></a>
+                            <a href="#" id="social-fb" class="text-stone hover:text-chalk transition-colors" data-sd-id="193"><iconify-icon icon="lucide:facebook" class="text-xl"></iconify-icon></a>
+                        </div>
+                    </div>
+                    <div class="col-span-2" data-sd-id="194">
+                        <h6 class="text-[10px] font-bold uppercase tracking-editorial mb-8" data-sd-id="195">Institucional</h6>
+                        <ul class="space-y-4" data-sd-id="196">
+                            <li data-sd-id="197"><a href="#" id="f-link-sobre" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="198">Sobre a marca</a></li>
+                            <li data-sd-id="199"><a href="#" id="f-link-carreiras" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="200">Carreiras</a></li>
+                            <li data-sd-id="201"><a href="#" id="f-link-sustentabilidade" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="202">Sustentabilidade</a></li>
+                            <li data-sd-id="203"><a href="#" id="f-link-contato" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="204">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2" data-sd-id="205">
+                        <h6 class="text-[10px] font-bold uppercase tracking-editorial mb-8" data-sd-id="206">Ajuda &amp; Suporte</h6>
+                        <ul class="space-y-4" data-sd-id="207">
+                            <li data-sd-id="208"><a href="#" id="f-link-faq" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="209">FAQ</a></li>
+                            <li data-sd-id="210"><a href="#" id="f-link-envio" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="211">Envio &amp; Prazos</a></li>
+                            <li data-sd-id="212"><a href="#" id="f-link-trocas" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="213">Trocas &amp; Devoluções</a></li>
+                            <li data-sd-id="214"><a href="#" id="f-link-medidas" class="text-sm text-stone hover:text-chalk transition-colors" data-sd-id="215">Guia de Medidas</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-4" data-sd-id="216">
+                        <h6 class="text-[10px] font-bold uppercase tracking-editorial mb-8" data-sd-id="217">Atendimento</h6>
+                        <p class="text-stone text-sm mb-4" data-sd-id="218">Segunda a Sexta, 09h às 18h</p>
+                        <p class="text-chalk text-lg font-serif mb-2 underline decoration-stone" data-sd-id="219">+55 11 99999-9999</p>
+                        <p class="text-stone text-sm" data-sd-id="220">atendimento@nomedaloja.com.br</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8" data-sd-id="221">
+                    <div class="flex items-center gap-6" data-sd-id="222">
+                        <iconify-icon icon="logos:visa" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"></iconify-icon>
+                        <iconify-icon icon="logos:mastercard" class="h-5 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"></iconify-icon>
+                        <iconify-icon icon="simple-icons:pix" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer text-chalk"></iconify-icon>
+                        <iconify-icon icon="logos:amex" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer"></iconify-icon>
+                    </div>
+                    <p class="text-[10px] text-stone uppercase tracking-widest" data-sd-id="223">
+                        © 2026 [NOME DA LOJA]. Todos os direitos reservados. CNPJ 00.000.000/0000-00
+                    </p>
+                    <div class="flex gap-8" data-sd-id="224">
+                        <a href="#" id="f-link-privacidade" class="text-[9px] text-stone hover:text-chalk uppercase tracking-widest transition-colors" data-sd-id="225">Privacidade</a>
+                        <a href="#" id="f-link-termos" class="text-[9px] text-stone hover:text-chalk uppercase tracking-widest transition-colors" data-sd-id="226">Termos</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Subtle scroll reveal logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('reveal-on-scroll');
+                observer.observe(section);
+            });
+            
+            // Hero is always visible
+            document.querySelector('section').classList.add('visible');
+        });
+    </script>
+
+</body></html>
