@@ -26,7 +26,7 @@ O Cloudflare Pages fornece `CF_PAGES_URL` automaticamente para os metadados. Se 
 
 O `next.config.ts` usa `output: "export"`; o build gera todo o site dentro de `out/`. O arquivo `public/_headers` adiciona cache longo para assets e cabeçalhos básicos de segurança no Pages.
 
-O `wrangler.jsonc` instala as dependências, executa o build e declara `./out` como `pages_build_output_dir`. Isso evita deployments vazios quando as configurações do painel não estão preenchidas corretamente.
+O export estático validado é versionado em `out/`, e o `wrangler.jsonc` declara essa pasta como `pages_build_output_dir`. O Cloudflare apenas publica os arquivos prontos, evitando divergências entre o build local e o ambiente do Pages.
 
 ## Personalização
 
