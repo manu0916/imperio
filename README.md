@@ -1,4 +1,4 @@
-# [NOME DA LOJA] — frontend streetwear
+# IMPERIO STORE — frontend streetwear
 
 Loja virtual demonstrativa construída com Next.js, TypeScript, Tailwind CSS, Framer Motion e Lucide. O projeto é totalmente estático e está pronto para publicação no Cloudflare Pages.
 

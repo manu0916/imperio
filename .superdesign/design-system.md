@@ -1,4 +1,4 @@
-# [NOME DA LOJA] — sistema visual do e-commerce
+# IMPERIO STORE — sistema visual do e-commerce
 
 ## Contexto do produto
 
@@ -6,7 +6,7 @@
 - Público: pessoas de 18–38 anos que procuram peças versáteis, atuais e fáceis de combinar, com apresentação mais premium que um marketplace comum.
 - Idioma: português do Brasil.
 - Moeda: Real brasileiro (R$), com preços formatados em `pt-BR`.
-- Identidade provisória obrigatória: nome `[NOME DA LOJA]` e slogan `[SLOGAN DA MARCA]`, ambos centralizados em configuração para futura substituição.
+- Identidade da marca: nome `IMPERIO STORE`; o slogan permanece centralizado em configuração para futura substituição.
 - Nesta fase não há backend, conta real, pagamento ou autenticação. Busca, filtros, favoritos e sacola são experiências de frontend com dados demonstrativos e persistência local.
 - As únicas imagens finais permitidas são os nove arquivos fornecidos pelo usuário no ZIP. Dois pares são duplicados; usar uma ocorrência de cada par é suficiente. Não importar, copiar ou baixar nenhuma mídia do Instagram.
 
@@ -92,7 +92,7 @@
 
 - 76px desktop / 64px mobile.
 - Transparente sobre o hero, texto claro quando necessário; ao rolar vira paper translúcido com blur discreto e filete inferior.
-- Wordmark tipográfico `[NOME DA LOJA]`, nunca um ícone inventado.
+- Wordmark tipográfico `IMPERIO STORE`, nunca um ícone inventado.
 - Desktop: Novidades, Feminino, Masculino, Coleções, Sale; busca, conta, favoritos e sacola.
 - Mobile: menu, wordmark central, busca e sacola; drawer completo.
 
@@ -174,7 +174,7 @@
 - Não introduzir rosa, roxo, neon, gradientes, dourado, personagens ou mascotes copiados, glassmorphism intenso ou cards genéricos com sombras.
 - Os desenhos devem parecer feitos à mão com traço off-white ou vinho, mas permanecer abstratos e originais; não usar logos, monogramas ou símbolos protegidos.
 - Permitir textura CSS de retícula/xerox em baixa opacidade, fita adesiva simulada, bordas tracejadas, marcações de registro e imagens com contraste alto. Não usar texturas ou assets externos.
-- Não criar logotipo gráfico; usar apenas o wordmark tipográfico provisório `[NOME DA LOJA]`.
+- Não criar logotipo gráfico; usar apenas o wordmark tipográfico `IMPERIO STORE`.
 - Não usar imagens do Instagram, bancos de imagens ou conteúdo gerado. Incorporar apenas URLs públicas retornadas para os arquivos do ZIP enviados.
 - Não copiar textos, logos ou marcas visíveis nas fotos. O catálogo e a copy são fictícios e originais.
 - O resultado deve equilibrar moda urbana real e acabamento editorial premium, com navegação comercial inequívoca.

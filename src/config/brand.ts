@@ -1,5 +1,5 @@
 export const brandConfig = {
-  name: "[NOME DA LOJA]",
+  name: "IMPERIO STORE",
   slogan: "[SLOGAN DA MARCA]",
   category: "moda contemporânea",
   locale: "pt-BR",
