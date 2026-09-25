@@ -26,6 +26,8 @@ O Cloudflare Pages fornece `CF_PAGES_URL` automaticamente para os metadados. Se 
 
 O `next.config.ts` usa `output: "export"`; o build gera todo o site dentro de `out/`. O arquivo `public/_headers` adiciona cache longo para assets e cabeçalhos básicos de segurança no Pages.
 
+O `wrangler.jsonc` também declara `./out` como `pages_build_output_dir`. Isso evita deployments vazios quando as configurações de saída do painel não estão preenchidas corretamente.
+
 ## Personalização
 
 - Marca, slogan, contato e Instagram: `src/config/brand.ts`
